@@ -1,4 +1,10 @@
 #include "main.h"
+/**
+*process_cmd - function that process the cmd
+*@tokensArray: parameter to pointer tokens array
+*@program_name: char parameter to program name
+*Return: none
+*/
 
 void process_cmd(char **tokensArray, char *program_name)
 {
@@ -43,6 +49,13 @@ void process_cmd(char **tokensArray, char *program_name)
 	free(actual_cmd);
 }
 
+/**
+*exit_check - function that checks for exit
+*@cmd: char parameter that check the cmd
+*@tokensArray: double pointer that check the tokens
+*@exit_status: int parameter that checks the status before exit
+*Return 0 on success
+*/
 
 void exit_check(char *cmd, char **tokensArray, int exit_status)
 {
@@ -66,6 +79,12 @@ void exit_check(char *cmd, char **tokensArray, int exit_status)
 	}
 }
 
+/**
+*check_cd - function that checks the cd
+*@cmd: char parameter that checks the cmd
+*@tokensArray: char double pointer that check the token
+*Return 0 on success
+*/
 
 void check_cd(char *cmd, char **tokensArray)
 {
@@ -110,6 +129,14 @@ void check_cd(char *cmd, char **tokensArray)
 	}
 }
 
+/**
+* find_cmd - function that searches for specified command
+* @cmd: parameter being passed
+*Description: The find_cmd function takes a command as input and searches
+*Return: On success, returns the full file path of the command
+*       On failure, returns NULL.
+*/
+
 char *find_cmd(char *cmd)
 {
 	char *path, *path_copy, *path_token, *file_path;
@@ -153,6 +180,12 @@ char *find_cmd(char *cmd)
 	}
 	return (NULL);
 }
+/**
+*execute_cmd - function to the execute command
+*@tokensArray: char pointer to tokensarray
+*@actual_cmd: char pointer to the actual command being passed
+*Return: none
+*/
 
 void execute_cmd(char **tokensArray, char *actual_cmd)
 {
