@@ -1,4 +1,10 @@
 #include "main.h"
+/**
+* main - entry point of the program
+*@ac: argurment count
+*@av: pointer argurment vector
+*Return: 0 on success
+*/
 
 int main(int ac, char **av)
 {
