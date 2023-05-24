@@ -8,50 +8,46 @@
 
 void process_cmd(char **tokensArray, char *program_name)
 {
-    char *cmd = tokensArray[0];
-    char *actual_cmd = NULL;
-    pid_t child_pid;
-    int status, exit_status = 0;
+	char *cmd = tokensArray[0];
+	char *actual_cmd = NULL;
+	pid_t child_pid;
+	int status, exit_status = 0;
+	struct stat statbuf;
 
-    exit_check(cmd, tokensArray, exit_status);
-    check_cd(cmd, tokensArray);
-
-    if (cmd != NULL && access(cmd, X_OK) == 0)
-    {
-        actual_cmd = strdup(cmd);
-    }
-    else
-    {
-        actual_cmd = find_cmd(cmd);
-    }
-
-    if (actual_cmd == NULL)
-    {
-        printf("%s: 1: %s: not found\n", program_name, cmd);
-    }
-    else
-    {
-        child_pid = fork();
-        if (child_pid == 0)
-        {
-            execute_cmd(tokensArray, actual_cmd);
-        }
-        else if (child_pid < 0)
-        {
-            perror(cmd);
-            free(actual_cmd);
-            exit(EXIT_FAILURE);
-        }
-        else
-        {
-            wait(&status);
-        }
-    }
-
-    free(actual_cmd);
+	exit_check(cmd, tokensArray, exit_status);
+	check_cd(cmd, tokensArray);
+	if (stat(cmd, &statbuf) == 0)
+	{
+		actual_cmd = strdup(cmd);
+	}
+	else
+	{
+		actual_cmd = find_cmd(cmd);
+	}
+	if (actual_cmd == NULL)
+	{
+		printf("%s: 1: %s: not found\n", program_name, cmd);
+	}
+	else
+	{
+		child_pid = fork();
+		if (child_pid == 0)
+		{
+			execute_cmd(tokensArray, actual_cmd);
+		}
+		else if (child_pid < 0)
+		{
+			perror(cmd);
+			free(actual_cmd);
+			exit(EXIT_FAILURE);
+		}
+		else
+		{
+			wait(&status);
+		}
+	}
+	free(actual_cmd);
 }
-
-
 
 /**
 *exit_check - function that checks for exit
@@ -63,7 +59,7 @@ void process_cmd(char **tokensArray, char *program_name)
 
 void exit_check(char *cmd, char **tokensArray, int exit_status)
 {
-	if (cmd != NULL && strcmp(cmd, "exit") == 0)
+	if (strcmp(cmd, "exit") == 0)
 	{
 		if (tokensArray[1] != NULL)
 		{
@@ -96,7 +92,7 @@ void check_cd(char *cmd, char **tokensArray)
 	int change_dir;
 	size_t size = 1024;
 
-	if (cmd != NULL && strcmp(cmd, "cd") == 0)
+	if (strcmp(cmd, "cd") == 0)
 	{
 		cd_buf = malloc(size);
 		if (tokensArray[1] == NULL)
@@ -147,10 +143,6 @@ char *find_cmd(char *cmd)
 	struct stat statbuf;
 	int cmd_length, directory_length;
 
-	if (cmd == NULL || *cmd == '\0') {
-		return NULL;
-	}
-
 	path = getenv("PATH");
 	if (path != NULL)
 	{
@@ -166,7 +158,7 @@ char *find_cmd(char *cmd)
 			if (file_path == NULL)
 			{
 				free(path_copy);
-				return NULL;
+				return (NULL);
 			}
 			strcpy(file_path, path_token);
 			strcat(file_path, "/");
@@ -174,7 +166,7 @@ char *find_cmd(char *cmd)
 			if (stat(file_path, &statbuf) == 0)
 			{
 				free(path_copy);
-				return file_path;
+				return (file_path);
 			}
 			else
 			{
@@ -184,11 +176,10 @@ char *find_cmd(char *cmd)
 		}
 		/* if we don't get any file_path that exists for the token*/
 		free(path_copy);
-		return NULL;
+		return (NULL);
 	}
-	return NULL;
+	return (NULL);
 }
-
 /**
 *execute_cmd - function to the execute command
 *@tokensArray: char pointer to tokensarray
