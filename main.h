@@ -11,7 +11,6 @@
 extern char **environ;
 FILE *check_stream(int ac, char **av, FILE *stream);
 void check_EOF(ssize_t readbytes, char *buf);
-void trim_spaces(char *str);
 void check_exit(char *buf);
 void check_cd(char *cmd, char **tokensArray);
 void cd_alone(int change_dir, size_t size, char *cd_buf);
