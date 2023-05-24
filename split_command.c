@@ -17,23 +17,21 @@ char **tokenization(char *buf, char **tokensArray, const char *delimeter)
 {
 	int i;
 	char *token;
-	char *bufCopy = strdup(buf);
 
-	token = strtok(bufCopy, delimeter);
+	token = strtok(buf, delimeter);
 	for (i = 0; token != NULL; i++)
 	{
 		tokensArray[i] = malloc(sizeof(char) * (strlen(token) + 1));
 		if (tokensArray[i] == NULL)
 		{
 			perror("Memory allocation failed");
-			free(bufCopy);
-			free_tokensArray(tokensArray);
+			free(buf);
 			return (NULL);
 		}
 		strcpy(tokensArray[i], token);
 		token = strtok(NULL, delimeter);
 	}
 	tokensArray[i] = NULL;
-	free(bufCopy);
+	free(buf);
 	return (tokensArray);
 }

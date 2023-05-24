@@ -5,7 +5,6 @@
 *@av: pointer argurment vector
 *Return: 0 on success
 */
-
 int main(int ac, char **av)
 {
 	char *buf, *bufcopy, *writebuf = "($) ",  *program_name = av[0];
@@ -22,7 +21,6 @@ int main(int ac, char **av)
 		{
 			write(STDERR_FILENO, writebuf, 4);
 		}
-		/* allocate memory for buf*/
 		buf = NULL;
 		readbytes = getline(&buf, &n, stream);
 		check_EOF(readbytes, buf);
