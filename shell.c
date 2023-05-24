@@ -32,11 +32,15 @@ int main(int ac, char **av)
 			free(buf);
 			continue;
 		}
-		/*check_env(buf);*/
 		bufcopy = malloc(readbytes + 1);
 		check_bufcopy(bufcopy, buf);
 		strcpy(bufcopy, buf);
 		tokenQuantity = no_of_tokens(bufcopy, delimeter);
+		if (tokenQuantity == 0)
+		{
+			free(buf);
+			continue;
+		}
 		tokensArray = malloc((tokenQuantity + 1) * sizeof(char *));
 		check_tokensArray(tokensArray, buf);
 		tokensArray = tokenization(buf, tokensArray, delimeter);
