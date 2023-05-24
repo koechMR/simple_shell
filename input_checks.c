@@ -65,6 +65,6 @@ void check_env(char *buf)
 {
 	if (strcmp(buf, "env\n") == 0)
 	{
-		print_env();
+		/*print_env();*/
 	}
 }
