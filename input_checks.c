@@ -45,7 +45,7 @@ void check_EOF(ssize_t readbytes, char *buf)
 /**
  *check_exit - fuunction to check exit
  *@buf: char buf to be passed
- *Return 0 on success
+ *Return: void
  */
 
 void check_exit(char *buf)
@@ -57,8 +57,9 @@ void check_exit(char *buf)
 	}
 }
 /**
- *check_env - function to check the env
+ *check_env - function to checks the evironment
  *@buf: char buf parameter to be checked
+ *Return: void
  */
 
 void check_env(char *buf)
