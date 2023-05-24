@@ -30,11 +30,12 @@ int main(int ac, char **av)
 			free(buf);
 			continue;
 		}
-		/*if (strcmp(buf, "\n") == 0)
+		trim_spaces(buf);
+		if (strcmp(buf, "\n") == 0)
 		{
 			free(buf);
 			continue;
-		}*/
+		}
 		check_EOF(readbytes, buf);
 		check_exit(buf);
 		/*check_env(buf);*/
