@@ -25,11 +25,11 @@ int main(int ac, char **av)
 		/* allocate memory for buf*/
 		buf = NULL;
 		readbytes = getline(&buf, &n, stream);
-		if (strcmp(buf, " \n") == 0)
+		/*if (strcmp(buf, " \n") == 0)
 		{
 			free(buf);
 			continue;
-		}
+		}*/
 		check_EOF(readbytes, buf);
 		check_exit(buf);
 		/*check_env(buf);*/
