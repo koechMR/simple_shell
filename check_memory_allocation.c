@@ -1,6 +1,7 @@
 #include "main.h"
 /**
-* check_bufcopy - function that checks for buffer copy
+* check_bufcopy - This is a function that checks if the buffer si free
+*               it copies to it
 *@bufcopy: first parameter to be checked
 *@buf: this is the pointer to buf
 *Return 0 on success
@@ -34,7 +35,7 @@ void check_tokensArray(char **tokensArray, char *buf)
 	}
 }
 /**
-*check_path_copy - this function checks the path to copy
+*check_path_copy - this is a  function checks the path before it can copy
 *@path_copy: pointer to a character array path copy
 *Return: return NULL if the path_copy is NULL,
 * otherwise return the path_copy pointer

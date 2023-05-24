@@ -1,9 +1,9 @@
 #include "main.h"
 /**
-*process_cmd - function that process the cmd
+*process_cmd - function that process the command
 *@tokensArray: parameter to pointer tokens array
-*@program_name: char parameter to program name
-*Return: none
+*@program_name: character parameter to program name
+*Return: return none
 */
 
 void process_cmd(char **tokensArray, char *program_name)
@@ -51,9 +51,9 @@ void process_cmd(char **tokensArray, char *program_name)
 
 /**
 *exit_check - function that checks for exit
-*@cmd: char parameter that check the cmd
+*@cmd: character parameter that check the cmd
 *@tokensArray: double pointer that check the tokens
-*@exit_status: int parameter that checks the status before exit
+*@exit_status: integer parameter that checks the status before exit
 *Return 0 on success
 */
 
@@ -80,9 +80,9 @@ void exit_check(char *cmd, char **tokensArray, int exit_status)
 }
 
 /**
-*check_cd - function that checks the cd
-*@cmd: char parameter that checks the cmd
-*@tokensArray: char double pointer that check the token
+*check_cd - function that checks the change directory
+*@cmd: character parameter that checks the cmd
+*@tokensArray: character double pointer that check the token
 *Return 0 on success
 */
 
@@ -182,9 +182,9 @@ char *find_cmd(char *cmd)
 }
 /**
 *execute_cmd - function to the execute command
-*@tokensArray: char pointer to tokensarray
-*@actual_cmd: char pointer to the actual command being passed
-*Return: none
+*@tokensArray: character pointer to tokensarray
+*@actual_cmd: character pointer to the actual command being passed
+*Return: return none
 */
 
 void execute_cmd(char **tokensArray, char *actual_cmd)
