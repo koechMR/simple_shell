@@ -27,6 +27,11 @@ int main(int ac, char **av)
 		readbytes = getline(&buf, &n, stream);
 		check_EOF(readbytes, buf);
 		check_exit(buf);
+		if (buf[0] == '\n')
+		{
+			free(buf);
+			continue;
+		}
 		/*check_env(buf);*/
 		bufcopy = malloc(readbytes + 1);
 		check_bufcopy(bufcopy, buf);
